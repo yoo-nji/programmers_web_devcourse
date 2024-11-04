@@ -15,6 +15,7 @@
 //2. 특정 날짜의 요일
 //설명: 2024년 12월 25일이 무슨 요일인지 출력하세요.
 {
+  //!! 월은 0부터 시작하기 때문에 new Date(2024, 12, 25)로 하면 1월이 됨, -1을 해서 쓰거나 템플릿리터럴로 해 주면 됨
   const specificDate = new Date(`2024-12-25`);
   // console.log(specificDate);
   const dayOfWeek = specificDate.getDay();
@@ -36,7 +37,7 @@
   const startDate = new Date(`2024-1-1`);
   console.log(startDate);
   const endDate = new Date(`2024-12-31`);
-  const diffDays = Math.floor((endDate - startDate)) / (1000 * 60 * 60 * 24);
+  const diffDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
   console.log(diffDays);
 }
 
@@ -46,6 +47,21 @@
   const birthDate = new Date(`1990-5-15`);
   const now = new Date();
   // console.log(`나이: ${now.getFullYear() - birthDate.getFullYear()}`);
+}
+// 강사님 풀이: 생일이 지났을 때, 안 지났을 때 조건 추가
+{
+  const birthday = new Date(1990, 9, 15);
+  const today = new Date();
+
+  let year = today.getFullYear() - birthday.getFullYear();
+
+  if (
+    today < new Date(today.getFullYear(), birthday.getMonth(), birthday.getDate())
+  ) {
+    year--;
+  }
+
+  console.log(year);
 }
 
 //6. 날짜 추가
@@ -82,13 +98,46 @@
   const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   console.log(formattedDate);
 }
+{
+  //!! 매개변수로 날짜를 넣으면 시간,분, 초가 00:00:00로 초기화됨
+  const today = new Date();
+  const startToZeroTime = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  );
+  console.log(startToZeroTime);
 
-//??9. 월별 요일 출력
+}
+
+//9. 월별 요일 출력 🔥
 //설명: 2024년 10월의 모든 날짜와 해당 요일을 출력하세요.
 {
   const date = new Date(2024, 10);
+  date.setDate(date.getDate() - 1);
 
-  console.log(date);
+  const year = date.getFullYear();
+  const month = date.getMonth();
+
+  const lastDate = date.getDate();
+  const dateToKor = [
+    "일요일",
+    "월요일",
+    "화요일",
+    "수요일",
+    "목요일",
+    "금요일",
+    "토요일",
+  ];
+
+  for (let day = 1; day <= lastDate; day++) {
+    const subdate = new Date(year, month, day);
+    const dayOfKorean = dateToKor[subdate.getDay()];
+    const formatted = `${year}-${String(month + 1).padStart(2, 0)}-${String(
+      day
+    ).padStart(2, 0)}: ${dayOfKorean}`;
+    console.log(formatted);
+  }
 }
 
 //10. 윤년 확인
