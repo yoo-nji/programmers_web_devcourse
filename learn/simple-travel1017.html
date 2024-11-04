@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- notosans font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Ovo&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      background-color: #fff
+    }
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 64px;
+    }
+
+    .header__logo {
+      width: 60px;
+      height: 60px;
+    }
+
+    .header__nav {
+      display: flex;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 18px;
+    }
+
+    .header__nav>ul {
+      display: flex;
+      list-style: none;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .header__nav>ul>li:first-child {
+      font-weight: 700;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .content {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 63.41px;
+    }
+
+    .content__img {
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <img class="header__logo" src="/learn/media/travel 1.svg" alt="travel">
+    <div class="header__nav">
+      <ul>
+        <li>
+          <a href="#">Seoul</a>
+        </li>
+        <li>
+          <a href="#">Paris</a>
+        </li>
+        <li>
+          <a href="#">New York</a>
+        </li>
+        <li>
+          <a href="#">London</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <section class="content"> <img class="content__img" src="/learn/media/seoul.png" alt="Seoul"></section>
+</body>
+
+</html>

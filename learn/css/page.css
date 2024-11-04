@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+* {
+  padding: auto;
+  margin: auto;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Source Sans 3", sans-serif;
+  background-color: #fff;
+}
+section {
+  width: 602px;
+  margin: 0 auto;
+  margin-top: 102px;
+  margin-bottom: 105px;
+}
+section div:first-child > * {
+  margin-bottom: 12px;
+}
+h1, h2 {
+  font-family: "Ovo", serif;
+  font-weight: 400;
+  color: #212529;
+}
+h1 {
+  font-size: 60px;
+  line-height: 68px;
+}
+h2 {
+  font-size: 40px;
+  line-height: 47px;
+}
+section div:nth-child(2) > p {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 35px;
+}
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 밑줄 제거 */
+  text-decoration: none;
+  width: 600px;
+  height: 60px;
+  background: #34495E;
+  font-size: 22px;
+  line-height: 35px;
+  color: #FFF;
+}

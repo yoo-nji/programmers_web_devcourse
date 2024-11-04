@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문이 열리는 효과</title>
+  <style>
+    .wrap {
+      width: 100px;
+      height: 100px;
+      border: 2px solid black;
+      margin: 100px;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: black;
+      transition: all 0.5s;
+      /* 부드러운 트랜지션 효과 */
+      transform-origin: left top;
+      /* 회전 축을 왼쪽 위로 설정 */
+    }
+
+    .box:hover {
+      transform: rotate(45deg);
+      /* Y축을 기준으로 90도 회전 */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+    <div class="box"></div>
+  </div>
+
+</body>
+
+</html>
