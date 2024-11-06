@@ -5,11 +5,19 @@
 {
   function getRandomPostTitle() {
     fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json());
-    // .then(console.log);
+      .then(response => {
+        //예외처리 중요!
+        if (!response.ok) throw new Error("error"); return response.json();
+      })
+      .then((data) => {
+        //랜덤 뽑기
+        const randomIndex = Math.floor(Math.random() * data.length);
+        console.log(`Random Post Title: ${data[randomIndex].title}`);
+      })
+      .catch(console.error);
   }
 
-  getRandomPostTitle();
+  getRandomPostTitle(); // Random Post Title: nostrum quis quasi placeat
 }
 
 //문제 2
@@ -17,8 +25,14 @@
 {
   function getUserInfo(userId) {
     fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
-      .then(response => response.json());
-    // .then(console.log);
+      .then(response => {
+        if (!response.ok) throw new Error("error");
+        return response.json();
+      })
+      .then((user) => {
+        console.log(` Name: ${user.name}, Email: ${user.email}`);
+      })
+      .catch(console.error);
 
   }
   getUserInfo(1); // Name: Leanne Graham, Email: Sincere@april.biz
@@ -82,24 +96,31 @@
   getAllCommentBodies();
 }
 
-// 문제 7
+//문제 7 🔥
 //설명: 모든 게시물의 제목을 정렬하여 출력하는 getSortedPostTitles 함수를 작성하세요.
 {
-
   function getSortedPostTitles() {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(data => {
-        // data.forEach(data => console.log(data.title));
-      });
+    fetch(`https://jsonplaceholder.typicode.com/posts`) //
+      .then((response) => {
+        if (!response.ok) throw new Error("error");
+        return response.json();
+      })
+      .then((posts) => {
+        //제목으로 정렬하기
+        const newPosts = posts.map((post) => post.title).sort();
+        newPosts.forEach((title) => {
+          console.log(title);
+        });
+      })
+      .catch(console.error);
   }
-
   getSortedPostTitles();
 }
 
-// 문제 8
+// 문제 8 🔥
 //설명: 모든 사용자의 주소 정보를 가져와 출력하는 getAllUserAddresses 함수를 작성하세요.
 {
+  //방법 1
   function getAllUserAddresses() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
@@ -111,7 +132,25 @@
       });
   }
 
+  //방법 2
+  function getAllUserAddresses() {
+    fetch(`https://jsonplaceholder.typicode.com/users`) //
+      .then((response) => {
+        if (!response.ok) throw new Error("error");
+        return response.json();
+      })
+      .then((users) => {
+        users.forEach((user) => {
+          //!!구조분해할당
+          const { street, suite, city, zipcode, geo } = user.address;
+          console.log(street, suite, city, zipcode, geo);
+        });
+      })
+      .catch(console.error);
+  }
+
   getAllUserAddresses();
+
 }
 
 //문제 9
