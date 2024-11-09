@@ -60,12 +60,20 @@
 }
 
 
-//??5. 문제: 다중 선택 드롭다운 구현
+//5. 문제: 다중 선택 드롭다운 구현
 // ** 설명 **: 여러 항목을 선택할 수 있는 드롭다운 메뉴를 구현합니다.
 // 힌트: selectedOptions 속성 사용하기;
 {
+  document.getElementById('getSelectedButton').addEventListener('click', function () {
+    const selectOptions = document.querySelector('#multiSelect').selectedOptions;
 
-
+    arr = [];
+    for (select of selectOptions) {
+      arr.push(select.value);
+    }
+    // console.log(arr.join(','));
+    result.textContent = arr.join(',');
+  });
 }
 
 
@@ -137,88 +145,88 @@
 // ** 설명 **: 현재 날짜를 기반으로 간단한 캘린더를 표시합니다.
 // 힌트: innerHTML, 테이블 태그를 문자열로 조합해서 만들면됨;
 {
-  // 현재 날짜 정보
-  const now = new Date();
-  // console.log(now);
+  // // 현재 날짜 정보
+  // const now = new Date();
+  // // console.log(now);
 
-  // 현재 정보(연도, 달, 일) 변수에 저장
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const day = now.getDate();
+  // // 현재 정보(연도, 달, 일) 변수에 저장
+  // const year = now.getFullYear();
+  // const month = now.getMonth() + 1;
+  // const day = now.getDate();
 
-  // 요일 구하기
-  const days = ['일', '월', '화', '수', '목', '금', '토'];
-  console.log(typeof days[now.getDay()]);
+  // // 요일 구하기
+  // const days = ['일', '월', '화', '수', '목', '금', '토'];
+  // console.log(typeof days[now.getDay()]);
 
-  //마지막 일 구하기
-  const lastDay = new Date(year, month - 1, 0).getDate();
-  console.log(lastDay); //31
+  // //마지막 일 구하기
+  // const lastDay = new Date(year, month - 1, 0).getDate();
+  // console.log(lastDay); //31
 
-  //캘린더에 활용할 새로운 Date 객체 복사
-  const calenderDate = new Date(now);
+  // //캘린더에 활용할 새로운 Date 객체 복사
+  // const calenderDate = new Date(now);
 
-  //캘린더 그리는 함수
-  function makeCalendar() {
-    const calendarCon = document.querySelector('#calendar');
-    calendarCon.innerHTML = ""; //초기화
-    let calendarInner = `
-    <table>
-    <tr>
-      <th>일</th>
-      <th>월</th>
-      <th>화</th>
-      <th>수</th>
-      <th>목</th>
-      <th>금</th>
-      <th>토</th>
-    </tr>`;
+  // //캘린더 그리는 함수
+  // function makeCalendar() {
+  //   const calendarCon = document.querySelector('#calendar');
+  //   calendarCon.innerHTML = ""; //초기화
+  //   let calendarInner = `
+  //   <table>
+  //   <tr>
+  //     <th>일</th>
+  //     <th>월</th>
+  //     <th>화</th>
+  //     <th>수</th>
+  //     <th>목</th>
+  //     <th>금</th>
+  //     <th>토</th>
+  //   </tr>`;
 
-    // 1일 요일 인덱스 
-    const firstDayIndex = new Date(year, month - 1, 1).getDay();
+  //   // 1일 요일 인덱스 
+  //   const firstDayIndex = new Date(year, month - 1, 1).getDay();
 
-    //캘린더 그리기
-    //1일부터 시작(초기값)
-    let day = 1;
+  //   //캘린더 그리기
+  //   //1일부터 시작(초기값)
+  //   let day = 1;
 
-    calenderDate.setDate(day);
-    // console.log(calenderDate);
+  //   calenderDate.setDate(day);
+  //   // console.log(calenderDate);
 
-    //첫줄 빈칸 + 날짜 채우기
-    calendarInner += `<tr>`;
-    //첫줄 생성 7번 반복
-    for (let i = 0; i < 7; i++) {
-      if (i < firstDayIndex) {
-        calendarInner += ` <td> </td>`;
-      } else {
-        calendarInner += ` <td>${day}</td>`;
-      }
-      day++;
-    }
-    calendarInner += `</tr>`;
-    console.log(day);
+  //   //첫줄 빈칸 + 날짜 채우기
+  //   calendarInner += `<tr>`;
+  //   //첫줄 생성 7번 반복
+  //   for (let i = 0; i < 7; i++) {
+  //     if (i < firstDayIndex) {
+  //       calendarInner += ` <td> </td>`;
+  //     } else {
+  //       calendarInner += ` <td>${day}</td>`;
+  //     }
+  //     day++;
+  //   }
+  //   calendarInner += `</tr>`;
+  //   console.log(day);
 
-    // 남은 날짜 채우기
-    while (day <= lastDay) {
-      calendarInner += `<tr>`;
-      for (let i = 0; i < 7; i++) {
-        if (day > lastDay) { // 31일보다 크면 빈칸 
-          calendarInner += `<td> </td>`;
-          day++;
-        } else {
-          calendarInner += `<td>${day}</td>`;
-          day++;
-        }
-      }
-      calendarInner += `</tr>`;
-    }
-    calendarInner += `</table>`;
+  //   // 남은 날짜 채우기
+  //   while (day <= lastDay) {
+  //     calendarInner += `<tr>`;
+  //     for (let i = 0; i < 7; i++) {
+  //       if (day > lastDay) { // 31일보다 크면 빈칸 
+  //         calendarInner += `<td> </td>`;
+  //         day++;
+  //       } else {
+  //         calendarInner += `<td>${day}</td>`;
+  //         day++;
+  //       }
+  //     }
+  //     calendarInner += `</tr>`;
+  //   }
+  //   calendarInner += `</table>`;
 
 
-    console.log(calendarInner);
-    calendarCon.innerHTML = calendarInner; //그리기
-  }
+  //   console.log(calendarInner);
+  //   calendarCon.innerHTML = calendarInner; //그리기
+  // }
 
-  //버튼 클릭시 캘린더 만들기
-  const btnEl = document.querySelector('#generateCalendarButton');
-  btnEl.addEventListener('click', makeCalendar);
+  // //버튼 클릭시 캘린더 만들기
+  // const btnEl = document.querySelector('#generateCalendarButton');
+  // btnEl.addEventListener('click', makeCalendar);
 }
