@@ -64,16 +64,16 @@
 // ** 설명 **: 여러 항목을 선택할 수 있는 드롭다운 메뉴를 구현합니다.
 // 힌트: selectedOptions 속성 사용하기;
 {
-  document.getElementById('getSelectedButton').addEventListener('click', function () {
-    const selectOptions = document.querySelector('#multiSelect').selectedOptions;
+  // document.getElementById('getSelectedButton').addEventListener('click', function () {
+  //   const selectOptions = document.querySelector('#multiSelect').selectedOptions;
 
-    arr = [];
-    for (select of selectOptions) {
-      arr.push(select.value);
-    }
-    // console.log(arr.join(','));
-    result.textContent = arr.join(',');
-  });
+  //   arr = [];
+  //   for (select of selectOptions) {
+  //     arr.push(select.value);
+  //   }
+  //   // console.log(arr.join(','));
+  //   result.textContent = arr.join(',');
+  // });
 }
 
 
@@ -151,7 +151,7 @@
 
   // // 현재 정보(연도, 달, 일) 변수에 저장
   // const year = now.getFullYear();
-  // const month = now.getMonth() + 1;
+  // const month = now.getMonth();
   // const day = now.getDate();
 
   // // 요일 구하기
@@ -168,7 +168,7 @@
   // //캘린더 그리는 함수
   // function makeCalendar() {
   //   const calendarCon = document.querySelector('#calendar');
-  //   calendarCon.innerHTML = ""; //초기화
+  //   calendarCon.innerHTML = ''; //초기화
   //   let calendarInner = `
   //   <table>
   //   <tr>
@@ -181,8 +181,8 @@
   //     <th>토</th>
   //   </tr>`;
 
-  //   // 1일 요일 인덱스 
-  //   const firstDayIndex = new Date(year, month - 1, 1).getDay();
+  //   // 1일 요일 인덱스
+  //   const firstDayIndex = new Date(year, month, 1).getDay();
 
   //   //캘린더 그리기
   //   //1일부터 시작(초기값)
@@ -199,8 +199,8 @@
   //       calendarInner += ` <td> </td>`;
   //     } else {
   //       calendarInner += ` <td>${day}</td>`;
+  //       day++;
   //     }
-  //     day++;
   //   }
   //   calendarInner += `</tr>`;
   //   console.log(day);
@@ -209,7 +209,8 @@
   //   while (day <= lastDay) {
   //     calendarInner += `<tr>`;
   //     for (let i = 0; i < 7; i++) {
-  //       if (day > lastDay) { // 31일보다 크면 빈칸 
+  //       if (day > lastDay) {
+  //         // 31일보다 크면 빈칸
   //         calendarInner += `<td> </td>`;
   //         day++;
   //       } else {
@@ -220,7 +221,6 @@
   //     calendarInner += `</tr>`;
   //   }
   //   calendarInner += `</table>`;
-
 
   //   console.log(calendarInner);
   //   calendarCon.innerHTML = calendarInner; //그리기
