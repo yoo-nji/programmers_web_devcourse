@@ -114,28 +114,111 @@
 // 8. 문제: 알림 시스템 구현
 // ** 설명 **: 사용자가 버튼을 클릭하면 알림 메시지를 보여주는 시스템을 구현합니다.;
 {
-  const message = () => {
-    notificationContainer.style.height = "20px";
-    notificationContainer.style.backgroundColor = 'skyblue';
-    notificationContainer.style.color = '#000';
-    notificationContainer.style.fontWeight = "bold";
-    notificationContainer.textContent = "새로운 알림!";
-    // 일정 시간 후에 알림 사라지게 하기 (3초 후)
-    setTimeout(() => {
-      notificationContainer.style.height = "0";
-      notificationContainer.style.backgroundColor = '';
-      notificationContainer.style.color = '';
-      notificationContainer.style.fontWeight = "";
-      notificationContainer.textContent = "";
-    }, 2000);
-  };
+  // const message = () => {
+  //   notificationContainer.style.height = "20px";
+  //   notificationContainer.style.backgroundColor = 'skyblue';
+  //   notificationContainer.style.color = '#000';
+  //   notificationContainer.style.fontWeight = "bold";
+  //   notificationContainer.textContent = "새로운 알림!";
+  //   // 일정 시간 후에 알림 사라지게 하기 (3초 후)
+  //   setTimeout(() => {
+  //     notificationContainer.style.height = "0";
+  //     notificationContainer.style.backgroundColor = '';
+  //     notificationContainer.style.color = '';
+  //     notificationContainer.style.fontWeight = "";
+  //     notificationContainer.textContent = "";
+  //   }, 2000);
+  // };
 
-  notifyButton.addEventListener("click", message);
+  // notifyButton.addEventListener("click", message);
 }
 
 //9. 문제: 캘린더 구현
 // ** 설명 **: 현재 날짜를 기반으로 간단한 캘린더를 표시합니다.
 // 힌트: innerHTML, 테이블 태그를 문자열로 조합해서 만들면됨;
 {
+  // 현재 날짜 정보
+  const now = new Date();
+  // console.log(now);
 
+  // 현재 정보(연도, 달, 일) 변수에 저장
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+
+  // 요일 구하기
+  const days = ['일', '월', '화', '수', '목', '금', '토'];
+  console.log(typeof days[now.getDay()]);
+
+  //마지막 일 구하기
+  const lastDay = new Date(year, month - 1, 0).getDate();
+  console.log(lastDay); //31
+
+  //캘린더에 활용할 새로운 Date 객체 복사
+  const calenderDate = new Date(now);
+
+  //캘린더 그리는 함수
+  function makeCalendar() {
+    const calendarCon = document.querySelector('#calendar');
+    calendarCon.innerHTML = ""; //초기화
+    let calendarInner = `
+    <table>
+    <tr>
+      <th>일</th>
+      <th>월</th>
+      <th>화</th>
+      <th>수</th>
+      <th>목</th>
+      <th>금</th>
+      <th>토</th>
+    </tr>`;
+
+    // 1일 요일 인덱스 
+    const firstDayIndex = new Date(year, month - 1, 1).getDay();
+
+    //캘린더 그리기
+    //1일부터 시작(초기값)
+    let day = 1;
+
+    calenderDate.setDate(day);
+    // console.log(calenderDate);
+
+    //첫줄 빈칸 + 날짜 채우기
+    calendarInner += `<tr>`;
+    //첫줄 생성 7번 반복
+    for (let i = 0; i < 7; i++) {
+      if (i < firstDayIndex) {
+        calendarInner += ` <td> </td>`;
+      } else {
+        calendarInner += ` <td>${day}</td>`;
+      }
+      day++;
+    }
+    calendarInner += `</tr>`;
+    console.log(day);
+
+    // 남은 날짜 채우기
+    while (day <= lastDay) {
+      calendarInner += `<tr>`;
+      for (let i = 0; i < 7; i++) {
+        if (day > lastDay) { // 31일보다 크면 빈칸 
+          calendarInner += `<td> </td>`;
+          day++;
+        } else {
+          calendarInner += `<td>${day}</td>`;
+          day++;
+        }
+      }
+      calendarInner += `</tr>`;
+    }
+    calendarInner += `</table>`;
+
+
+    console.log(calendarInner);
+    calendarCon.innerHTML = calendarInner; //그리기
+  }
+
+  //버튼 클릭시 캘린더 만들기
+  const btnEl = document.querySelector('#generateCalendarButton');
+  btnEl.addEventListener('click', makeCalendar);
 }
