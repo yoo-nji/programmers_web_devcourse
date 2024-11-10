@@ -1,0 +1,9 @@
+2024-11-08 08:18:13,022 - INFO - Server is running, but with errors. Retrying operations...
+2024-11-08 08:18:55,320 - ERROR - Timeout error: Failed to connect to external API in 30 seconds
+2024-11-08 08:19:01,207 - INFO - Server stopped due to fatal error
+2024-11-08 08:19:02,320 - CRITICAL - Application crashed due to unhandled exception: MemoryError
+Traceback (most recent call last):
+  File "/app/server.py", line 350, in main
+    run_server()
+MemoryError: Unable to allocate memory for processing
+2024-11-08 08:19:02,450 - INFO - Shutting down server gracefully

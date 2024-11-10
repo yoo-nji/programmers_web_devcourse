@@ -1,0 +1,7 @@
+2024-11-08 08:17:03,001 - INFO - Retrying database connection...
+2024-11-08 08:17:08,565 - ERROR - Database connection failed: Connection refused
+2024-11-08 08:18:11,763 - ERROR - Internal server error: KeyError - 'user_data'
+Traceback (most recent call last):
+  File "/app/server.py", line 256, in get_user_info
+    user_info = database.get_user_data(user_id)
+KeyError: 'user_data'

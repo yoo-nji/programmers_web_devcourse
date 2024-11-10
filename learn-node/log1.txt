@@ -1,0 +1,8 @@
+2024-11-08 08:15:32,456 - INFO - Server started on port 8080
+2024-11-08 08:16:03,102 - ERROR - Database connection failed: Connection timed out
+2024-11-08 08:16:12,215 - WARNING - User 'admin' attempted to login with invalid credentials
+2024-11-08 08:17:02,480 - ERROR - Uncaught exception: IndexError - list index out of range
+Traceback (most recent call last):
+  File "/app/server.py", line 125, in process_request
+    result = data[request_id]
+IndexError: list index out of range
