@@ -5,9 +5,16 @@ function pickNumber() {
   // console.log("눌림");
   const liEls = document.querySelectorAll('#lucky-numbers > li');
 
-  let lottoNumber = () => Math.floor(Math.random() * 45) + 1;
+  let randomNumber = () => Math.floor(Math.random() * 45) + 1;
+
+  const lottoNumber = new Set();
+  while (lottoNumber.size < 6) {
+    lottoNumber.add(randomNumber());
+  }
+  const lottoNumberArr = [...lottoNumber];
+  // console.log(lottoNumberArr);
 
   liEls.forEach((li) => {
-    li.textContent = `${lottoNumber()}`;
+    li.textContent = `${lottoNumberArr.pop()}`;
   });
 }
