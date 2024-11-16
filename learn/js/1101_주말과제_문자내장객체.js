@@ -131,7 +131,7 @@ console.log(`a: ${a}, e: ${e}, i: ${i}, o: ${o}, u: ${u}`);
   const str = "hello world";
   let result = "";
   str.split("").forEach((v) => {
-    //!! 정규식에서는 [] 대괄호 안에 넣으면 하나씩 개별적으로 찾을 수 있음
+    //!! 정규식에서는 [] 대괄호 안에 넣으면 하나씩 개별적으로 찾을 수 있음(괄호 안의 문자 중 하나라도 일치하면 매칭)
     if (v.match(/[aeiou]/i)) result += "#";
     else result += v;
   });
@@ -176,12 +176,20 @@ console.log(`a: ${a}, e: ${e}, i: ${i}, o: ${o}, u: ${u}`);
   console.log(a === b);
 }
 
-//?? 15. String Interleaving
+// 15. String Interleaving
 // ** 문제 설명 **: 두 문자열이 교차하여 결합된 형태인지 확인하세요.예) "abc"와 "abdc" → true.;
 {
   const str1 = "abc";
   const str2 = "abdc";
-  // 여기에 코드를 작성하세요
+
+  // 정규식 이용하여 str1에 매칭되지 않는 모든 항목 제거
+  const regex = new RegExp(`[^${str1}]`, "g");
+  const result = str2.replace(regex, ""); // 결과 저장
+
+
+  console.log(str1 === result ? true : false);
+
+
 }
 
 //?? 16 Longest Palindromic Substring
@@ -226,11 +234,13 @@ console.log(`a: ${a}, e: ${e}, i: ${i}, o: ${o}, u: ${u}`);
   console.log(result);
 }
 
-//?? 20. Create Acronym
+// 20. Create Acronym
 //** 문제 설명 **: 주어진 문자열에서 각 단어의 첫 글자를 따서 약어를 만드세요.;
 {
   const str = "For your information";
-  // 여기에 코드를 작성하세요
+  const result = [];
+  str.split(" ").forEach(v => result.push(v.charAt(0).toUpperCase()));
+  console.log(result.join(""));
 }
 
 //21. Validate Email Format
@@ -241,10 +251,12 @@ console.log(`a: ${a}, e: ${e}, i: ${i}, o: ${o}, u: ${u}`);
   console.log(email.includes("@"));
 }
 
-//?? 22. Find Missing Letters
+// 22. Find Missing Letters
 //** 문제 설명 **: 주어진 문자열에서 누락된 알파벳 문자를 찾아 배열로 반환하세요.
 {
   const str = "abcdegh";
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  console.log([...alphabet].filter(char => !str.includes(char)));
 }
 
 //23.Sort Characters
