@@ -290,3 +290,14 @@
   const func = createMultipler(10);
   console.log(func(5)); // 50
 }
+
+{
+  //void
+  //never => 절대 반환되지 않는 함수
+  //무한루프 -> 고의로 쓸 일이 거의 없어서 실무에선 x
+  //에러를 던지는 경우
+
+  function errorFunc(message: string): never {
+    throw new Error(message);
+  }
+}
