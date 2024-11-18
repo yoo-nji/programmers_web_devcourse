@@ -61,8 +61,8 @@
 //연습문제+
 //1
 {
-  const sumAllNumbers = (arr: number[]): number =>
-    arr.reduce((acc, cur) => acc + cur);
+  const sumAllNumbers = (...arr: number[][]): number[] =>
+    arr.map((arr) => arr.reduce((acc, cur) => acc + cur));
   console.log(sumAllNumbers([1, 2, 3, 4, 5]));
 }
 //2
@@ -74,7 +74,7 @@
 }
 //3
 {
-  const multiplyArrays = (n1: number[], n2: number[]) => {
+  const multiplyArrays = (n1: number[], n2: number[]): number[][] => {
     const min = n1.length > n2.length ? n2.length : n1.length;
     let n1Arr: number[] = [];
     let n2Arr: number[] = [];
@@ -84,7 +84,7 @@
     }
     return [n1Arr, n2Arr];
   };
-  console.log(multiplyArrays([1, 2, 3], [4, 5, 6]));
+  console.log(multiplyArrays([1, 2, 3, 4], [4, 5, 6]));
 }
 //4 타입을 숫자로 한정
 {
@@ -98,10 +98,12 @@
     if (obj.name && obj.age) console.log(`Name: ${obj.name} Age: ${obj.age}`);
     else if (obj.name) console.log(`Name: ${obj.name}`);
     else if (obj.age) console.log(`Age: ${obj.age}`);
+    else console.log(`해당 값이 없습니다`);
   };
   formatInfo({ name: "John" });
   formatInfo({ age: 30 });
   formatInfo({ name: "John", age: 30 });
+  formatInfo({});
 }
 //6
 {
