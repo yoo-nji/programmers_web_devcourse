@@ -301,3 +301,50 @@
     throw new Error(message);
   }
 }
+
+//----------------------------------------------------------------
+
+//타입 오퍼레이터
+{
+  // & , |
+
+  //| or (유니온타입)
+
+  let value: number | string | boolean = 10;
+  value = "hello";
+  value = true;
+
+  let obj: { name: string; age: number } | { skill: string } = {
+    name: "Alice",
+    age: 30,
+  };
+  obj = { skill: "JavaScript" };
+
+  let arr: number[] | string[] = [1, 2, 3];
+  arr = ["apple", "banana", "orange"];
+
+  let mixArr: (string | number)[] = ["a", 1, "b"];
+}
+
+{
+  //& and (인터섹션 타입)
+  //기본타입에는 사용할 수 없음
+  //ex) 숫자면서 문자인 타입은 존재하지 않는다
+  //그럼 언제 사용?
+  //객체에서 사용
+
+  let value: { name: string; age: number } & { skill: string } = {
+    name: "Alice",
+    age: 30,
+    skill: "JavaScript",
+  };
+
+  //아니 그럼 한 번에 쓸 수 있잖아???
+  let value2: { name: string; age: number; skill: string } = {
+    name: "Alice",
+    age: 30,
+    skill: "JavaScript",
+  };
+  //라고 생각할 수 있지만 아직 배우지 않은 부분이 있어서 그럼
+  //나중에 더 배우면 왜 사용하는지 이해할 수 있게 된다
+}
