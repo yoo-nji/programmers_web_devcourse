@@ -1,3 +1,11 @@
+{
+  //!! 나만의 타입을 짓는 방법
+  //타입스크립트 타입 -> number, string, object, boolean...등
+  //타입별칭(type alias)
+  //규칙 type MyType(첫글자 대문자로 선언)
+  type MyType = string | number | boolean;
+}
+
 //연습문제 1
 //1
 {
@@ -15,14 +23,15 @@
     else return value * 2;
   }
 }
+//3
+//✅ 나만의 타입 사용해 보기
+type Person = { name: string; age: number };
+type Employee = { jobTitle: string; salary: number };
 {
   const person = { name: "john", age: 20 };
   const employee = { jobTitle: "front", salary: 5000 };
 
-  function mergeObjects(
-    person: { name: string; age: number },
-    employee: { jobTitle: string; salary: number }
-  ): { name: string; age: number; jobTitle: string; salary: number } {
+  function mergeObjects(person: Person, employee: Employee) {
     return { ...person, ...employee };
   }
 
@@ -150,14 +159,14 @@
     if (typeof date === "string") return date;
     else {
       const year = date.getFullYear();
-      const month = date.getMonth() + 1;
-      const day = date.getDate();
+      const month = (date.getMonth() + 1).toString().padStart(2, "0");
+      const day = date.getDate().toString().padStart(2, "0");
       return `${day}/${month}/${year}`;
     }
   }
 
   console.log(formatDate("2024-11-19")); // '2024-11-19'
-  console.log(formatDate(new Date(2024, 10, 10))); // "11/19/2025"
+  console.log(formatDate(new Date(2024, 4, 1))); // "01/05/2024"
 }
 //6
 {
