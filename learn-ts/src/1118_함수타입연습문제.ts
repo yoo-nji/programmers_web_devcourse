@@ -52,9 +52,13 @@
   const double = (num: number): number => num * 2;
   console.log(double(5));
 }
-//??10: 함수 오버로딩 배운 후 풀어보기
 {
-  const getInfo = () => {};
+  const getInfo = (value: number | string) => {
+    if (typeof value === "number") return `{Name: ${value}}`;
+    else return `{age: ${value}}`;
+  };
+  console.log(getInfo(20));
+  console.log(getInfo("John"));
 }
 
 //----------------------------------------------------------------
