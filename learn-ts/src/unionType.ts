@@ -21,7 +21,7 @@
 {
   //이렇게 쓰면 오류남
   function printProcess(value: string | number): void {
-    console.log(value.toUpperCase());
+    // console.log(value.toUpperCase());
   }
   printProcess("hello, world");
 }
@@ -45,8 +45,8 @@
   const value1 = printProcess("hello, world");
   const value2 = printProcess(10);
   //여기서 문자열이다, 숫자열이다 가정하고 해당 메서드를 사용할 수 없다
-  console.log(value1.toUpperCase());
-  console.log(value2.toFixed(2));
+  // console.log(value1.toUpperCase());
+  // console.log(value2.toFixed(2));
 }
 //해결
 //타입가드를 이용해서 문자열, 숫자열이라는 확신을 줘야 한다
