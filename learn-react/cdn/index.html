@@ -7,7 +7,11 @@
   <title>React with CDN</title>
   <!-- React와 ReactDOM을 CDN으로 불러옵니다 -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+  <!-- react don <-> real dom -->
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- 트랜스 컴파일러 도구  -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 
@@ -15,17 +19,20 @@
 
   <div id="root"></div>
 
-  <script type="text/babel">
-    // JSX 코드를 작성합니다
-    const App = () => {
-      return (
-        <div>
-          <h1>Hello, React with CDN!</h1>
-        </div>
-      );
-    };
+  <!-- <script type="text/babel">
+    //createElement(태그명, 속성(객체형태), 콘텐츠)
+    const element = React.createElement("h1", { id: "title" }, "Hello, React!");
     // ReactDOM.render를 사용하여 화면에 컴포넌트를 렌더링합니다
-    ReactDOM.render(<App />, document.getElementById('root'));
+    ReactDOM.render(element, document.getElementById('root'));
+  </script> -->
+
+  <!-- 중첩 연습  -->
+  <script type="text/babel">
+    //createElement(태그명, 속성(객체형태), 콘텐츠1, 콘텐츠2, 콘텐츠3)
+    const h1El = React.createElement("h1", null, "Hello, React!");
+    const h2El = React.createElement("h2", null, "Create Element");
+    const main = React.createElement("main", { id: "main" }, h1El, h2El);
+    ReactDOM.render(main, document.getElementById('root'));
   </script>
 
 </body>
