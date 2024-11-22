@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React with CDN</title>
+  <!-- React와 ReactDOM을 CDN으로 불러옵니다 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // JSX 코드를 작성합니다
+    const App = () => {
+      return (
+        <div>
+          <h1>Hello, React with CDN!</h1>
+        </div>
+      );
+    };
+    // ReactDOM.render를 사용하여 화면에 컴포넌트를 렌더링합니다
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+
+</body>
+
+</html>
