@@ -19,20 +19,33 @@
 
   <div id="root"></div>
 
+  <!-- ✅ 1.리액트가 출시되자마자 존재했던 문법 -->
   <!-- <script type="text/babel">
     //createElement(태그명, 속성(객체형태), 콘텐츠)
     const element = React.createElement("h1", { id: "title" }, "Hello, React!");
     // ReactDOM.render를 사용하여 화면에 컴포넌트를 렌더링합니다
     ReactDOM.render(element, document.getElementById('root'));
+
+    //✅ 중첩 연습
+    // //createElement(태그명, 속성(객체형태), 콘텐츠1, 콘텐츠2, 콘텐츠3)
+    // const h1El = React.createElement("h1", null, "Hello, React!");
+    // const h2El = React.createElement("h2", null, "Create Element");
+    // const main = React.createElement("main", { id: "main" }, h1El, h2El);
+    // ReactDOM.render(main, document.getElementById('root'));
   </script> -->
 
-  <!-- 중첩 연습  -->
   <script type="text/babel">
-    //createElement(태그명, 속성(객체형태), 콘텐츠1, 콘텐츠2, 콘텐츠3)
-    const h1El = React.createElement("h1", null, "Hello, React!");
-    const h2El = React.createElement("h2", null, "Create Element");
-    const main = React.createElement("main", { id: "main" }, h1El, h2El);
-    ReactDOM.render(main, document.getElementById('root'));
+    // ✅ 2. JSX(Javascript + XML(HTML))
+    const App = () => {
+      return (
+        <div>
+          <h1>Hello, React JSX!</h1>
+          <h2>Create Element</h2>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 
 </body>
