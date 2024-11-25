@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button onclick="render()">추가</button>
+  <ul></ul>
+  <script>
+    function render() {
+      const ulEl = document.querySelector('ul');
+      for (let i = 0; i < 300; i++) {
+        ulEl.innerHTML += `<li>${i}</li>`;
+      }
+    }
+    //렌더링 성능 향상
+    //리플로우 최소화
+    function render2() {
+      const ulEl = document.querySelector('ul');
+      let liEls = "";
+      for (let i = 0; i < 300; i++) {
+        liEls += `<li>${i}</li>`;
+      }
+      ulEl.innerHTML = liEls;
+    }
+  </script>
+</body>
+
+</html>
