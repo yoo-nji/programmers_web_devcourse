@@ -6,6 +6,8 @@ export default function App() {
       {/* 스타일충돌 */}
       {/* <h1 className="text-3xl underline text-2xl">App</h1> */}
       <h1 className={twMerge("text-3xl", "underline", "text-2xl")}>App</h1>
+
+      <input type="text" />
     </>
   );
 }
