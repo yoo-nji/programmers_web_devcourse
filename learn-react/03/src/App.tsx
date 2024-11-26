@@ -1,18 +1,22 @@
-import styled from "styled-components";
-
-const HelloWord = styled.h1`
-font-size: 30px;
-color: blue;
-`;
+import { css } from "@emotion/css";
 
 export default function App() {
   return (
     <>
-      <div>
-        <HelloWord> hello</HelloWord>
-        <h1>hello, react!</h1>
-        <h2>react, styling!</h2>
-      </div>
+      <h1
+        className={css`
+        font-size: 30px;
+        color: rebeccapurple;
+        text-decoration: line-through;
+        &:hover{
+          color: #0f8200;
+          text-decoration: none;
+        }
+      `}
+      >
+        hello, react
+      </h1>
+      <h1>hello, emotion!</h1>
     </>
   );
 }
