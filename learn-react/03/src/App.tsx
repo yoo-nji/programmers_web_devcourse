@@ -1,9 +1,16 @@
-import styles from "./App.module.css";
+import styled from "styled-components";
+
+const HelloWord = styled.h1`
+font-size: 30px;
+color: blue;
+`;
+
 export default function App() {
   return (
     <>
       <div>
-        <h1 className={styles.title}>hello, react!</h1>
+        <HelloWord> hello</HelloWord>
+        <h1>hello, react!</h1>
         <h2>react, styling!</h2>
       </div>
     </>
