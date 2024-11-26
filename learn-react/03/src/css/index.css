@@ -1,3 +1,4 @@
 /* css의 진입점 */
 @import "./globals.css";
 @import "./reset.css";
+@import "./tailwind.css";
