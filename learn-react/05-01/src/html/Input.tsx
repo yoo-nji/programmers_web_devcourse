@@ -1,13 +1,11 @@
-import { twMerge } from "tailwind-merge";
+type InputProps = React.ComponentPropsWithRef<"input">;
 
-export default function Input({ placeText }: { placeText: string }) {
+export default function Input(props: InputProps) {
+  const { ...rest } = props;
+  // console.log(rest);
   return (
     <>
-      <input
-        type="text"
-        className={twMerge(`w-60 h-11 rounded-lg pl-4 font-inter text-sm px-4 placeholder:text-[#acacac]`)}
-        placeholder={placeText}
-      />
+      <input {...rest} />
     </>
   );
 }
