@@ -1,5 +1,7 @@
 import { twMerge } from "tailwind-merge";
-type CheckboxProps = React.ComponentPropsWithRef<"input">;
+// checkbox 속성 외에 다른 게 올 때 예방법
+//Omit, & 사용
+type CheckboxProps = Omit<React.ComponentPropsWithRef<"input">, "type"> & { type?: "checkbox" };
 
 export default function CheckBox(props: CheckboxProps) {
   const { children, className, ...rest } = props;

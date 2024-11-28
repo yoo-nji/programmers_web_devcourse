@@ -13,6 +13,8 @@ export default function App() {
         disabled={true}
         maxLength={3}
       />
+      {/* ⚠️ 여기서 문제는 체크박스의 타입이 바뀐다면? ui가 무너짐 */}
+      {/* Omit 유틸리티타입 사용 */}
       <CheckBox className="checked:bg-blue-500">
         I agree with <em>terms</em> and <em>policies</em>.
       </CheckBox>
