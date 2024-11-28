@@ -1,3 +1,8 @@
+import ProfileCardBody from "./ProfileCardBody";
+import ProfileCardHeader from "./ProfileCardHeader";
+
+//✅ 프레젠테이션 컴포넌트
+//단순히 컴포넌트를 프레젠테이션 해주는 컴포넌트
 export default function Profile({
   bimg,
   img,
@@ -13,15 +18,8 @@ export default function Profile({
 }) {
   return (
     <>
-      <div>
-        <img className="card-img" src={bimg} alt="background-pic" />
-      </div>
-      <div className="profile">
-        <img className="prof-img" src={img} alt="profile-pic" />
-        <h3 className="alias">{name}</h3>
-        <p className="username">{id}</p>
-        <button onClick={() => clickHandler(name)}>Follow</button>
-      </div>
+      <ProfileCardHeader bimg={bimg} />
+      <ProfileCardBody img={img} name={name} id={id} clickHandler={clickHandler} />
     </>
   );
 }
