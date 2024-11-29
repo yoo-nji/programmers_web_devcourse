@@ -1,9 +1,9 @@
-import ColorBox from "./components/ColorBox";
+import Sustagram from "./components/Sustagram";
 
 export default function App() {
   return (
     <>
-      <ColorBox />
+      <Sustagram />
     </>
   );
 }
