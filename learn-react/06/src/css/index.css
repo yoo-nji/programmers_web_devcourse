@@ -1,5 +1,2 @@
-/* @import "./tailwind.css"; */
-
-.bg {
-  background-image: url("../assets/images/tree.jpg");
-}
+@import "./tailwind.css";
+/* @import "./lamp.css"; */
