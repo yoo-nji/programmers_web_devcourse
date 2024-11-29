@@ -1,3 +1,11 @@
+import tree from "./assets/images/tree.jpg";
 export default function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <>
+      {/* 이미지 넣기 */}
+      <img src={tree} alt="" />
+      {/* 백그라운드 이미지 넣기 */}
+      <div className="w-60 h-60" style={{ background: `url(${tree})` }}></div>
+    </>
+  );
 }
