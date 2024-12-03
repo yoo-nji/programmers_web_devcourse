@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import TodoEditor from "./TodoEditor";
 import TodoHeader from "./TodoHeader";
 import TodoList from "./TodoList";
@@ -17,16 +17,16 @@ export default function Todo() {
       { id: Date.now(), text: text, completed: false },
     ]);
   };
-  const toggleTodo = (id: number) => {
+  const toggleTodo = useCallback((id: number) => {
     setTodos((todos) =>
       todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
-  };
-  const removeTodo = (id: number) => {
+  }, []);
+  const removeTodo = useCallback((id: number) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
-  };
+  }, []);
   // 웹브라우저 로컬스토리지에 저장
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
