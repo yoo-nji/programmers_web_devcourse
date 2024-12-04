@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { CounterContext } from "../CounterContext"; // CounterContext import 확인
+import { useMemo, useState } from "react";
+import { CounterActionContext, CounterContext } from "../CounterContext"; // CounterContext import 확인
 
 export default function CounterProvider({
   children,
@@ -12,17 +12,14 @@ export default function CounterProvider({
   const decrement = () => setCount((count) => count - 1);
   const reset = () => setCount(0);
 
+  const memo = useMemo(() => ({ increment, decrement, reset }));
+
   //value는 하나의 값만 전달할 수 있기 때문에 객체로 묶어서 전달하기
   return (
-    <CounterContext.Provider
-      value={{
-        count,
-        increment,
-        decrement,
-        reset,
-      }}
-    >
-      {children}
-    </CounterContext.Provider>
+    <CounterActionContext.Provider value={memo}>
+      <CounterContext.Provider value={count}>
+        {children}
+      </CounterContext.Provider>
+    </CounterActionContext.Provider>
   );
 }
