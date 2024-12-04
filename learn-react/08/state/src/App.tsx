@@ -1,3 +1,25 @@
+import { useState } from "react";
+import Count from "./components/Count";
+
 export default function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  const [count, setCount] = useState(0);
+  const increment = () => {
+    setCount((count) => count + 1);
+  };
+  const decrement = () => {
+    setCount((count) => count - 1);
+  };
+  const reset = () => {
+    setCount(0);
+  };
+  return (
+    <>
+      <Count
+        count={count}
+        increment={increment}
+        decrement={decrement}
+        reset={reset}
+      />
+    </>
+  );
 }
