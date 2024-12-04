@@ -12,12 +12,12 @@ export default function CounterProvider({
   const decrement = () => setCount((count) => count - 1);
   const reset = () => setCount(0);
 
-  const memo = useMemo(() => ({ increment, decrement, reset }));
+  const memo = useMemo(() => ({ increment, decrement, reset }), []);
 
   //value는 하나의 값만 전달할 수 있기 때문에 객체로 묶어서 전달하기
   return (
     <CounterActionContext.Provider value={memo}>
-      <CounterContext.Provider value={count}>
+      <CounterContext.Provider value={{ count }}>
         {children}
       </CounterContext.Provider>
     </CounterActionContext.Provider>

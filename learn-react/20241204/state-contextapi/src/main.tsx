@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./css/index.css";
 import CounterProvider from "./context/provider/CounterProvider.tsx";
+import AuthProvider from "./context/provider/AuthProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <CounterProvider>
-      <App />
-    </CounterProvider>
+    <AuthProvider>
+      <CounterProvider>
+        <App />
+      </CounterProvider>
+    </AuthProvider>
   </StrictMode>
 );
