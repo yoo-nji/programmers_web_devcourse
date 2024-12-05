@@ -1,10 +1,9 @@
-import Axios from "./components/Axios";
-import FetchMethod from "./components/FetchMethod";
+import AxiosMethod from "./components/AxiosMethod";
 
 export default function App() {
   return (
     <>
-      <FetchMethod />
+      <AxiosMethod />
     </>
   );
 }
