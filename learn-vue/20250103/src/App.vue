@@ -1,6 +1,6 @@
 <script>
-import Template from "./components/Template.vue";
-import Vfor from "./components/Vfor.vue";
+import InlineStyle from "./components/InlineStyle.vue";
+import StyledComponents from "./components/StyledComponents.vue";
 
 export default {
   name: "App",
@@ -8,13 +8,21 @@ export default {
     return {};
   },
   components: {
-    Template,
-    Vfor,
+    InlineStyle,
+    StyledComponents,
   },
 };
 </script>
 <template>
-  <Vfor />
-  <Template />
+  <button class="btn btn-primary">로그인</button>
+  <h1 className="text-3xl font-bold underline">Hello world!</h1>
+  <div><h2>SCSS Test</h2></div>
+  <StyledComponents />
 </template>
-<style scoped></style>
+<style lang="scss" scoped>
+div {
+  h2 {
+    color: red;
+  }
+}
+</style>
