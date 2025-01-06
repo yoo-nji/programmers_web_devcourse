@@ -5,6 +5,9 @@ export default {
     return {
       count: 0,
       query: "",
+      name: "홍길동",
+      age: 20,
+      gender: "male",
     };
   },
   methods: {
@@ -48,5 +51,15 @@ export default {
 
   <input type="text" :value="query" @input="handleInput" />
   {{ query }}
+  <hr />
+  <!-- 메모이제이션 -->
+  <div v-memo="[name, age]">
+    <h1>{{ name }}</h1>
+    <h1>{{ age }}</h1>
+    <h1>{{ gender }}</h1>
+  </div>
+  <button @click="name = '유리'">이름 변경</button>
+  <button @click="age = 5">나이 변경</button>
+  <button @click="gender = 'female'">성별 변경</button>
 </template>
 <style scoped></style>
