@@ -1,12 +1,20 @@
 <script>
+import First from "./components/First.vue";
+
 export default {
   name: "App",
+  components: {
+    First,
+  },
   data() {
-    return {};
+    return {
+      isShow: true,
+    };
   },
 };
 </script>
 <template>
-  <h1>hello</h1>
+  <button @click="isShow = !isShow">상태 제어</button>
+  <First v-if="isShow" />
 </template>
 <style scoped></style>
