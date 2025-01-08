@@ -33,8 +33,17 @@ export default {
         alert("Remember me is checked!’");
       }
 
+      localStorage.setItem("uid", this.email);
+
       alert("Form submitted successfully!");
     },
+  },
+  created() {
+    const uid = localStorage.getItem("uid");
+    if (uid) {
+      this.email = uid;
+      this.remember = true;
+    }
   },
 };
 </script>
@@ -91,11 +100,11 @@ export default {
                 class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
               />
             </div>
-            <label for="remember" class="ms-2 text-sm font-medium text-gray-900"
+            <label for="remember" class="text-sm font-medium text-gray-900 ms-2"
               >Remember me</label
             >
           </div>
-          <a href="#" class="ms-auto text-sm text-blue-700 hover:underline"
+          <a href="#" class="text-sm text-blue-700 ms-auto hover:underline"
             >Lost Password?</a
           >
         </div>
