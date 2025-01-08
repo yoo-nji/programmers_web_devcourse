@@ -41,10 +41,13 @@ export default {
   created() {
     console.log(this.isSecond);
   },
+  mounted() {
+    console.log(this.$refs.childRef);
+  },
 };
 </script>
 <template>
-  <FirstChild :name="name" :print-hello="printHello" v-on:greet="greet" />
+  <FirstChild ref="childRef" />
   <hr />
   <ProvideFirst />
   <hr />

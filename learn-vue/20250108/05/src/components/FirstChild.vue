@@ -23,6 +23,10 @@ export default {
       this.$emit("greet");
     },
   },
+  // 자식 -> 부모 참조
+  mounted() {
+    console.log(this.$parent);
+  },
 };
 </script>
 <template>
