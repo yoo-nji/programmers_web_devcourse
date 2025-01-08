@@ -1,5 +1,70 @@
 <script>
-export default {};
+export default {
+  name: "App",
+  data() {
+    return {
+      inputText: "",
+    };
+  },
+  computed: {
+    // 공백 포함 글자수
+    inputLength() {
+      return this.inputText.length;
+    },
+    // 공백 포함 바이트
+    inputBytes() {
+      // 바이트는 영어는 1바이트, 한글은 2바이트로 계산
+      return this.inputText
+        .split("")
+        .reduce((acc, cur) => acc + (cur.charCodeAt(0) > 127 ? 2 : 1), 0);
+    },
+    // 공백 제거 글자수
+    inputWithoutEmptyLength() {
+      return this.inputText.replaceAll(" ", "").length;
+    },
+    //공백 제거 바이트
+    inputWithoutEmptyBytes() {
+      return this.inputText
+        .replaceAll(" ", "")
+        .split("")
+        .reduce((acc, cur) => acc + (cur.charCodeAt(0) > 127 ? 2 : 1), 0);
+    },
+  },
+  methods: {
+    handleChange(event) {
+      this.inputText = event.target.value;
+    },
+    copyText() {
+      if (navigator.clipboard) {
+        navigator.clipboard
+          .writeText(this.inputText)
+          .then(() => {
+            alert("복사되었습니다.");
+          })
+          .catch((err) => {
+            alert("복사에 실패했습니다.", err);
+          });
+      } else {
+        //!! 구형 브라우저
+        const textArea = document.createElement("textarea");
+        textArea.value = this.inputText;
+        document.body.appendChild(textArea); // body에 추가
+        textArea.select(); // 추가한 텍스트 영역 선택
+        const successful = document.execCommand("copy"); // 복사
+        document.body.removeChild(textArea); // body에서 제거
+
+        if (successful) {
+          alert("복사되었습니다.");
+        } else {
+          alert("복사에 실패했습니다.");
+        }
+      }
+    },
+    clear() {
+      this.inputText = "";
+    },
+  },
+};
 </script>
 
 <template>
@@ -7,15 +72,25 @@ export default {};
     <h1>글자수세기</h1>
     <div class="box">
       <div class="string-length">
-        <textarea placeholder="내용을 입력해주세요"></textarea>
+        <textarea
+          placeholder="내용을 입력해주세요"
+          :value="inputText"
+          @input="handleChange"
+        ></textarea>
       </div>
       <div class="str-info">
-        <p>공백 포함 <span>0</span> 자 | <span>0</span> byte</p>
-        <p>공백 제외 <span>0</span> 자 | <span>0</span> byte</p>
+        <p>
+          공백 포함 <span>{{ inputLength }}</span> 자 |
+          <span>{{ inputBytes }}</span> byte
+        </p>
+        <p>
+          공백 제외 <span>{{ inputWithoutEmptyLength }}</span> 자 |
+          <span>{{ inputWithoutEmptyBytes }}</span> byte
+        </p>
       </div>
       <div class="btn-area">
-        <button>전체복사</button>
-        <button>초기화</button>
+        <button @click="copyText">전체복사</button>
+        <button @click="clear">초기화</button>
       </div>
     </div>
   </div>
