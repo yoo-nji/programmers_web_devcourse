@@ -1,4 +1,5 @@
 <script>
+import { count, increment } from "@/key/count";
 export default {
   name: "ProvideSecond",
   data() {
@@ -8,7 +9,17 @@ export default {
   provide: {
     isSecond: true,
   },
-  inject: ["message", "name"],
+  inject: {
+    secondCount: {
+      from: count,
+      default() {
+        return 0;
+      },
+    },
+    incrementsSymbol: {
+      from: increment,
+    },
+  },
   created() {
     console.log(this.message);
     console.log(this.name);
@@ -18,5 +29,8 @@ export default {
 <template>
   <h1>Provide Second</h1>
   <h1>{{ message }} // {{ name }}</h1>
+  <hr />
+  <h1>Second Child Count: {{ count }}</h1>
+  <button @click="count++">증가</button>
 </template>
 <style scoped></style>
