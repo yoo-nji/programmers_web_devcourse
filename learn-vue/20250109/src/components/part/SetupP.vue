@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+// import { reactive, ref } from "vue";
 import Setup from "../Setup.vue";
 
 // 반응형 데이터 정의
@@ -13,11 +13,36 @@ const state = ref({
 });
 const numArr = ref([1, 2, 3, 4, 5]);
 console.log(count.value);
+
+const state2 = reactive({
+  count: 0,
+});
+
+// 둘은 차이가 없어 보이지만 스크립트 태그 내에서 사용할 땐 차이가 있다
+// ref는 .value를 붙여야 실제 값을 사용할 수 있지만 reactive는 그냥 사용 가능
+console.log(state.value.count);
+console.log(count.value);
+console.log(state2.count);
+
+//computed
+const doubleCount = computed(() => count.value * 2);
+const firstName = ref("신");
+const lastName = ref("짱구");
+// const fullName = computed(() => firstName.value + lastName.value);
+const fullName = computed({
+  get: () => firstName.value + lastName.value,
+  set: (value) => {
+    const names = value.split(" ");
+    firstName.value = names[0];
+    lastName.value = names[1];
+  },
+});
 </script>
 <template>
   <h1>Setup</h1>
   <Setup />
   <hr />
+  <h3>ref</h3>
   <div>{{ count }}</div>
   <div>{{ state.count }}</div>
   <div>{{ numArr }}</div>
@@ -25,5 +50,20 @@ console.log(count.value);
   <button @click="count++">증가(count)</button>
   <button @click="state.count++">증가(state.count)</button>
   <button @click="numArr.push(6)">추가(numArr)</button>
+
+  <hr />
+  <h3>reactive</h3>
+  <div>{{ state2.count }}</div>
+  <button @click="state2.count++">증가(state2.count)</button>
+
+  <hr />
+  <h3>computed</h3>
+  <div>{{ doubleCount }}</div>
+  <button @click="count++">증가(count)</button>
+
+  <hr />
+  <h3>computed2</h3>
+  <div>{{ fullName }}</div>
+  <button @click="fullName = '김 철수'">이름 변경</button>
 </template>
 <style scoped></style>
