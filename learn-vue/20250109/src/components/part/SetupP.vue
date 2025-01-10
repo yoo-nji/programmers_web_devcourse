@@ -42,20 +42,18 @@ const fullName = computed({
 // watch 감시자
 // 특정 데이터를 감시
 const count2 = ref(0);
+watch(count2, (cur, prev) => {
+  console.log("count2 변경됨", cur, prev);
+});
 
 const state3 = ref({
   num: 0,
 });
-
 const incrementState3 = () => {
   state3.value.num++;
 };
-
-watch(count2, (cur, prev) => {
-  console.log("count2 변경됨", cur, prev);
-});
 watch(
-  state3,
+  () => state3,
   (cur, prev) => {
     console.log("state3 변경됨", cur, prev);
   },
