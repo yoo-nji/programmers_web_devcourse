@@ -58,6 +58,28 @@ const router = createRouter({
       component: () => import('@/pages/ProductItem.vue'),
     }]
   },
+  //대시보드
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    components: {
+      header: () => import('@/components/DashboardHeader.vue'),
+      default: () => import('@/pages/Dashboard.vue'),
+      footer: () => import('@/components/DashboardFooter.vue'),
+    }
+  },
+  // 리다이렉트
+  {
+    path: "/profile/:id", // 여기서 바뀐다면?
+    redirect: (to) => {
+      return { name: "ProfileId", params: { id: to.params.id } };
+    }
+  },
+  {
+    path: "/profiles/:id",
+    name: "ProfileId",
+    component: () => import("@/pages/Profile.vue"),
+  }
   ],
 });
 

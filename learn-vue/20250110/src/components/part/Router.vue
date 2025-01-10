@@ -6,6 +6,7 @@
     <!-- 이름이 있는 경로 방식 -->
     <RouterLink :to="{ name: 'About' }">About</RouterLink>
     <RouterLink :to="{ name: 'Product' }">Product</RouterLink>
+    <RouterLink :to="{ name: 'Dashboard' }">Dashboard</RouterLink>
     <!-- 동적은 이렇게 -->
     <RouterLink
       :to="{
@@ -16,7 +17,10 @@
       >User</RouterLink
     >
   </nav>
+  <RouterView name="header" />
+  <!-- name이 없으면 기본으로 렌더링 -->
   <RouterView />
+  <RouterView name="footer" />
 </template>
 <style scoped>
 a {
