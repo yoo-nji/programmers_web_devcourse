@@ -1,0 +1,6 @@
+<script setup></script>
+<template>
+  <h1>Not Found</h1>
+  <p>Page not found</p>
+</template>
+<style scoped></style>

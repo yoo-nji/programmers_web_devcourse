@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import About from '@/pages/About.vue';
 import Home from '@/pages/Home.vue';
 
 // 라우터 인스턴스 생성
@@ -18,14 +17,28 @@ const router = createRouter({
   // 파일경로 : src/router/index.js
   // router 폴더 생성
   routes: [{
+    // ✅ 정적 임포트 방식으로 라우트 컴포넌트 지정
     path: '/', //url 경로
     name: 'Home', //라우터 고유이름
     component: Home, //url로 접근했을 때 표시될 컴포넌트
   },
+  // ✅ 동적 임포트
   {
     path: '/about', //url 경로
     name: 'About', //라우터 고유이름
-    component: About, //url로 접근했을 때 표시될 컴포넌트
+    component: () => import('@/pages/About.vue'), //따로 임포트하지 않음
+  },
+  // ✅ 동적 경로 매칭
+  {
+    path: '/user/:id', //url 경로
+    name: 'User', //라우터 고유이름
+    component: () => import('@/pages/User.vue'), //따로 임포트하지 않음
+  },
+  // ✅ 404 페이지
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('@/pages/NotFound.vue'),
   },
   ],
 });
