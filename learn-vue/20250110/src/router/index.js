@@ -30,7 +30,7 @@ const router = createRouter({
   },
   // ✅ 동적 경로 매칭
   {
-    path: '/user/:id', //url 경로
+    path: '/:user/:id', //url 경로
     name: 'User', //라우터 고유이름
     component: () => import('@/pages/User.vue'), //따로 임포트하지 않음
   },
@@ -39,6 +39,24 @@ const router = createRouter({
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('@/pages/NotFound.vue'),
+  },
+  // 중첩라우트
+  //중첩 경로 탐색 방식 
+  // children: []
+  {
+    path: '/product',
+    name: 'Product',
+    component: () => import('@/pages/Product.vue'),
+    children: [{
+      path: 'info',
+      name: 'ProductInfo',
+      component: () => import('@/pages/ProductInfo.vue'),
+    },
+    {
+      path: ':item',
+      name: 'ProductItem',
+      component: () => import('@/pages/ProductItem.vue'),
+    }]
   },
   ],
 });
