@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px);
+      background-size: 10px 10px;
+      background-position: top left;
+    }
+  </style>
+</head>
+
+<body>
+  <svg width="500" height="500">
+    <!-- ✅원 그리기 -->
+    <!-- cx속성: 타원의 중심 x 좌표 -->
+    <!-- cy속성: 타원의 중심 y 좌표 -->
+    <!-- r속성: 타원의 가로 반지름 -->
+    <!-- <circle cx="50" cy="50" r="50" fill="red"></circle> -->
+
+    <!-- ✅ 타원 그리기 -->
+    <!-- rx: 가로 반지름 -->
+    <!-- ry: 세로 반지름 -->
+    <!-- <ellipse cx="50" cy="50" rx="40" ry="20" fill="red" fill-opacity="0.5"></ellipse> -->
+
+    <!-- ✅ 다각형 그리기-->
+    <!-- points: 다각형의 꼭지점 좌표 -->
+    <!-- <polygon points="50,0 0,50 50,100 100,50"></polygon> -->
+
+    <!-- ✅    선 그리기 -->
+    <!-- x1: 시작점 x좌표 -->
+    <!-- y1: 시작점 y좌표 -->
+    <!-- x2: 끝점 x좌표 -->
+    <!-- y2: 끝점 y좌표 -->
+    <!-- <line x1="50" y1="50" x2="200" y2="50" stroke="black" stroke-width="2"></line> -->
+
+    <!-- ✅ 경로 그리기 -->
+    <!-- d: 경로를 정의하는 문자열 -->
+    <!-- m: 이동 명령어 -->
+    <!-- l: 선 명령어 -->
+    <!-- q: 곡선 명령어 -->
+    <!-- <path d="m 0 50 q 50 -50 100 0 l 100 0"></path> -->
+
+    <!-- ✅ 텍스트 -->
+    <!-- x, y -->
+    <!-- <text x="50" y="50" font-size="20" fill="red">Hello</text> -->
+
+    <!-- 실습 피타고라스 삼각형 만들기 -->
+    <!-- <polygon points="0,0 0,200 140,200" fill="blue" fill-opacity="0.5"> </polygon>
+    <text x="70" y="100" font-size="20" fill="black">5</text>
+    <text x="0" y="100" font-size="20" fill="black">4</text>
+    <text x="0" y="200" font-size="20" fill="black">90</text>
+    <text x="70" y="220" font-size="20" fill="black">3</text> -->
+
+
+    <!-- ✅ 그룹 -->
+    <!-- g: 그룹태그 -->
+    <g>
+      <text x="0" y="20">Red</text>
+      <rect x="0" y="30" width="50" height="50" fill="red"></rect>
+    </g>
+
+    <g transform="translate(100)">
+      <text x="100" y="20">Green</text>
+      <rect x="100" y="30" width="50" height="50" fill="green"></rect>
+    </g>
+
+    <g transform="translate(200)">
+      <text x="200" y="20">Pink</text>
+      <rect x="200" y="30" width="50" height="50" fill="pink"></rect>
+    </g>
+  </svg>
+  <!-- <img src="circle.png" alt=""> -->
+
+</body>
+
+</html>
