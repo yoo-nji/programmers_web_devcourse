@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .movie-label {
+      font-weight: bold;
+      font-style: italic;
+      margin-right: 110px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <h3>2025년 100만 관객 돌파 영화 TOP 9~15</h3>
+  <div>
+    <span class="movie-label">영화</span>
+    <span>관객수</span>
+  </div>
+  <svg width="600" height="500">
+    <!-- 1300만명 기준
+    비율을 구하는 공식: 막대의 최대 넓이 / 최대 데이터 
+     400  / 13122895 = 0.00003048
+     -->
+    <g transform="translate(150, 30) scale(0.00003048, 1)">
+      <rect x="0" y="0" width="13122895
+      " height="20" fill="lightblue"></rect>
+      <rect x="0" y="25" width="13019740" height="20" fill="lightblue"></rect>
+      <rect x="0" y="50" width="12984701	" height="20" fill="lightblue"></rect>
+      <rect x="0" y="75" width="12812186	" height="20" fill="lightblue"></rect>
+      <rect x="0" y="100" width="12797927" height="20" fill="lightblue"></rect>
+      <rect x="0" y="125" width="12707237" height="20" fill="lightblue"></rect>
+      <rect x="0" y="150" width="12693415" height="20" fill="lightblue"></rect>
+    </g>
+    <g>
+      <text x="0" y="45">서울의 봄</text>
+      <text x="0" y="70">괴물</text>
+      <text x="0" y="95">도둑들</text>
+      <text x="0" y="120">7번방의 선물</text>
+      <text x="0" y="145">알라딘</text>
+      <text x="0" y="170">암살</text>
+      <text x="0" y="195">범죄도시2</text>
+    </g>
+
+    <!-- 1300만명 기준 
+    1300 * 0.00003048 = 396.24
+    433 * 396.24 / 1300 = 131.97
+   866 * 396.24 / 1300 = 263.95
+    1300 * 396.24 / 1300 = 396.24
+    -->
+
+    <g transform="translate(150, 15)" text-anchor="middle">
+      <text x="0">0</text>
+      <text x="131.97">433만명</text>
+      <text x="263.95">866만명</text>
+      <text x="396.24">1300만명</text>
+    </g>
+    <g stroke="black" stroke-width="2" transform="translate(150, 30)">
+      <line x1="0" y1="0" x2="0" y2="-10"></line>
+      <line x1="131.97" y1="0" x2="131.97" y2="-10"></line>
+      <line x1="263.95" y1="0" x2="263.95" y2="-10"></line>
+      <line x1="396.24" y1="0" x2="396.24" y2="-10"></line>
+    </g>
+  </svg>
+</body>
+
+</html>

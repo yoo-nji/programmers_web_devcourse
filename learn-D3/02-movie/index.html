@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .movie-label {
+      font-weight: bold;
+      font-style: italic;
+      margin-right: 110px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <h3>2025년 100만 관객 돌파 영화 TOP 7</h3>
+  <div>
+    <span class="movie-label">영화</span>
+    <span>관객수</span>
+  </div>
+  <svg width="600" height="500">
+    <!-- 1770만명 기준
+    비율을 구하는 공식: 막대의 최대 넓이 / 최대 데이터 
+     400  / 17616141 = 0.0000227
+     -->
+    <g transform="translate(150, 30) scale(0.0000227, 1)">
+      <rect x="0" y="0" width="17616141
+      " height="20" fill="lightblue"></rect>
+      <rect x="0" y="25" width="16266480" height="20" fill="lightblue"></rect>
+      <rect x="0" y="50" width="14414658	" height="20" fill="lightblue"></rect>
+      <rect x="0" y="75" width="14265222	" height="20" fill="lightblue"></rect>
+      <rect x="0" y="100" width="13977602" height="20" fill="lightblue"></rect>
+      <rect x="0" y="125" width="13768331" height="20" fill="lightblue"></rect>
+      <rect x="0" y="150" width="13624328" height="20" fill="lightblue"></rect>
+    </g>
+    <g>
+      <text x="0" y="45">명량</text>
+      <text x="0" y="70">극한직업</text>
+      <text x="0" y="95">신과함꼐: 죄와 벌</text>
+      <text x="0" y="120">국제시장</text>
+      <text x="0" y="145">어벤져스: 엔드게임</text>
+      <text x="0" y="170">겨울왕국 2</text>
+      <text x="0" y="195">아바타</text>
+    </g>
+
+    <!-- 1770만명 기준 
+    1770 * 0.0000227 = 401.79
+    590 * 401.79 / 1770 = 133.93
+    1180 * 401.79 / 1770 = 267.86 
+    -->
+
+    <g transform="translate(150, 15)" text-anchor="middle">
+      <text x="0">0</text>
+      <text x="133.93">590만명</text>
+      <text x="267.86">1180만명</text>
+      <text x="401.79">1770만명</text>
+    </g>
+    <g stroke="black" stroke-width="2" transform="translate(150, 30)">
+      <line x1="0" y1="0" x2="0" y2="-10"></line>
+      <line x1="133.93" y1="0" x2="133.93" y2="-10"></line>
+      <line x1="267.86" y1="0" x2="267.86" y2="-10"></line>
+      <line x1="401.79" y1="0" x2="401.79" y2="-10"></line>
+    </g>
+  </svg>
+</body>
+
+</html>
